@@ -43,10 +43,13 @@ RUN <<-EOT
 EOT
 
 #install kernel+grub+plymouth 
-RUN apt-get install -y linux-headers-generic linux-image-generic grub-efi plymouth sudo 
+RUN apt-get install -y linux-headers-generic linux-image-generic grub-efi plymouth sudo perl
 
-#install ubuntu-desktop with snap and flaptak as alternative package-managers
-RUN apt-get install -y snapd flatpak ubuntu-desktop-minimal ubuntu-standard
+#install snap and flaptak as alternative package-managers
+RUN apt-get install -y snapd flatpak 
+
+#install packagekit, snap and flatpak bindings
+RUN apt-get install -y --no-install-recommends packagekit python3-gi gir1.2-packagekitglib-1.0 gir1.2-snapd-2 gir1.2-flatpak-1.0
 
 #configure flatpak to use flathub as default remote
 RUN flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
