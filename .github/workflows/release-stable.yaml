@@ -6,7 +6,7 @@
         - cron: '0 2 * * 0'
       push:
         paths:
-          - 'Containerfile'
+          - 'stable'
         branches:
           - latest
       workflow_dispatch:
@@ -17,9 +17,6 @@
     
         steps:
           - uses: actions/checkout@v4
-  
-          - name: Set up QEMU
-            uses: docker/setup-qemu-action@v3
 
           - name: Generate metadata
             id: meta
@@ -38,11 +35,10 @@
             uses: redhat-actions/buildah-build@v2
             with:
               containerfiles: |
-                ./Containerfile
+                ./stable
               oci: true
               tags: ${{ steps.meta.outputs.tags }}
               labels: ${{ steps.meta.outputs.labels }}
-              platforms: linux/amd64,linux/arm64
 
           - name: Push to Github Registry
             id: push-image
@@ -50,6 +46,5 @@
             with:
               image: ${{ steps.build-image.outputs.image }}
               tags: ${{ steps.build-image.outputs.tags }}
-              registry: ghcr.io
               username: ${{ github.repository_owner }}
               password: ${{ secrets.GITHUB_TOKEN }}

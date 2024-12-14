@@ -25,7 +25,7 @@ FROM base AS builder
 ENV container=docker
 ENV DEBIAN_FRONTEND=noninteractive
 
-COPY 99_saturn.gschema.override /usr/share/glib-2.0/schemas/99_saturn.gschema.override
+COPY overrides /usr/share/glib-2.0/schemas/99_saturn.gschema.override
 
 RUN apt-get update && apt-get dist-upgrade -y
 
