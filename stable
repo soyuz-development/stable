@@ -44,7 +44,7 @@ RUN apt-get update -y && apt-get dist-upgrade -y && rm -rf /var/lib/apt/lists/* 
 RUN apt-get update -y && apt-get install -y linux-headers-generic && rm -rf /var/lib/apt/lists/* /var/log/{alternatives.log,apt/history.log,apt/term.log,dpkg.log}
 RUN apt-get update -y && apt-get install -y linux-image-generic && rm -rf /var/lib/apt/lists/* /var/log/{alternatives.log,apt/history.log,apt/term.log,dpkg.log}
 RUN apt-get update -y && apt-get install -y grub-efi && rm -rf /var/lib/apt/lists/* /var/log/{alternatives.log,apt/history.log,apt/term.log,dpkg.log}
-RUN apt-get update -y && apt-get install -y plymouth plymouth-theme-spinnner && rm -rf /var/lib/apt/lists/* /var/log/{alternatives.log,apt/history.log,apt/term.log,dpkg.log}
+RUN apt-get update -y && apt-get install -y plymouth plymouth-theme-spinner && rm -rf /var/lib/apt/lists/* /var/log/{alternatives.log,apt/history.log,apt/term.log,dpkg.log}
 RUN apt-get update -y && apt-get install --no-install-recommends -y snapd && rm -rf /var/lib/apt/lists/* /var/log/{alternatives.log,apt/history.log,apt/term.log,dpkg.log}
 RUN apt-get update -y && apt-get install --no-install-recommends -y flatpak && rm -rf /var/lib/apt/lists/* /var/log/{alternatives.log,apt/history.log,apt/term.log,dpkg.log} && flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 RUN apt-get update -y && apt-get install --no-install-recommends -y packagekit && rm -rf /var/lib/apt/lists/* /var/log/{alternatives.log,apt/history.log,apt/term.log,dpkg.log}
